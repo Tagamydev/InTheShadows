@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cubxe3cb8ub6"]
+
+[ext_resource type="PackedScene" uid="uid://h8oaxvw1lnef" path="res://Prefabs/baseObject.tscn" id="1_bmgxl"]
+[ext_resource type="PackedScene" uid="uid://d1wtbo8xagw1f" path="res://Prefabs/Camera.tscn" id="2_rhmwt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_stqnc"]
+sky_material = SubResource("ProceduralSkyMaterial_aygce")
+
+[sub_resource type="Environment" id="Environment_q611x"]
+background_mode = 2
+sky = SubResource("Sky_stqnc")
+tonemap_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_aygce"]
+
+[node name="Level000" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q611x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -1)
+mesh = SubResource("QuadMesh_aygce")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 3)
+shadow_enabled = true
+spot_range = 11.584
+spot_attenuation = 0.32
+spot_angle = 13.0
+
+[node name="Node3D" parent="." instance=ExtResource("1_bmgxl")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 1.5)
+
+[node name="Level000" parent="." instance=ExtResource("2_rhmwt")]
