@@ -1,10 +1,7 @@
 extends Node3D
 
-# Whether we’re currently dragging/rotating
 var rotating: bool = false
 var grabbed: bool = false
-
-# Where the mouse was last frame
 var last_mouse_pos: Vector2 = Vector2.ZERO
 var	obj = null;
 var	normal = null;
@@ -53,7 +50,6 @@ func _ray_cast(event):
 	var camera = get_viewport().get_camera_3d()
 	var from = $Camera3D.position
 	var to   = from + camera.project_ray_normal(event.position) * 1000
-
 	var space_state = get_world_3d().direct_space_state
 	var ray = PhysicsRayQueryParameters3D.create(from, to)
 	var result = space_state.intersect_ray(ray)
@@ -61,7 +57,6 @@ func _ray_cast(event):
 
 
 func _input(event):
-	# Handle mouse button presses
 	if event is InputEventMouseButton and \
 	(event.button_index == MOUSE_BUTTON_WHEEL_DOWN or \
 	event.button_index == MOUSE_BUTTON_WHEEL_UP or \
@@ -98,11 +93,9 @@ func _input(event):
 				grabbed = false
 
 
-	# Handle mouse motion when in “rotating” mode
 	elif event is InputEventMouseMotion and rotating:
 		var mouse_delta = event.position - last_mouse_pos
 		last_mouse_pos = event.position
-		# Y-axis (up) rotation for horizontal mouse movement
 		if abs(mouse_delta.y) > abs(mouse_delta.x):
 			rotate_vertical(mouse_delta)
 		else:
@@ -111,7 +104,6 @@ func _input(event):
 		var mouse_delta = event.position - last_mouse_pos
 		last_mouse_pos = event.position
 
-		# Optional: Add a small threshold to prevent noise
 		if abs(mouse_delta.y) > 0.1:
 			obj.position += Vector3(0, -0.001 * mouse_delta.y, 0)
 		if abs(mouse_delta.x) > 0.1:
