@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxlktg2i416a6"]
-
-[ext_resource type="ArrayMesh" uid="uid://fh7fsf01cwnd" path="res://Models/elephant.obj" id="1_uu8d3"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0980952, -0.0169868, 0.00942188, -0.00683623, -0.0152113, -0.0985996, 0.0181821, -0.0973656, 0.0137603, 0, 0, 0)
-mesh = ExtResource("1_uu8d3")

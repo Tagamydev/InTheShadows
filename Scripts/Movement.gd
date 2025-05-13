@@ -1,13 +1,23 @@
 extends Node3D
 
-
 # Whether we’re currently dragging/rotating
 var rotating: bool = false
+var grabbed: bool = false
+
 # Where the mouse was last frame
 var last_mouse_pos: Vector2 = Vector2.ZERO
 var	obj = null;
 var	normal = null;
 
+func _clean():
+	obj = null
+	normal = null
+	last_mouse_pos = Vector2.ZERO
+	rotating = false
+	grabbed = false
+
+func _ready():
+	SignalBus.solved.connect(_clean)
 
 func rotate_vertical(mouse_delta):
 	var rotation_speed := 0.01
@@ -32,7 +42,7 @@ func rotate_vertical(mouse_delta):
 
 
 func rotate_horizontal(mouse_delta):
-	var rotation_speed := 0.05
+	var rotation_speed := 0.03
 	if mouse_delta.x > 0:
 		obj.rotate_y(1 * rotation_speed)
 	if mouse_delta.x < 0:
@@ -55,44 +65,54 @@ func _input(event):
 	if event is InputEventMouseButton and \
 	(event.button_index == MOUSE_BUTTON_WHEEL_DOWN or \
 	event.button_index == MOUSE_BUTTON_WHEEL_UP or \
+	event.button_index == MOUSE_BUTTON_RIGHT or \
 	event.button_index == MOUSE_BUTTON_LEFT):
 		var result = _ray_cast(event)
+		if result.size() != 0:
+			obj = result.collider
+			obj = obj.get_parent()
+			obj = obj.get_parent()
+		else:
+			return
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				# Cast a ray from the camera through the mouse cursor
-				if result.size() != 0:
-					obj = result.collider
-					obj = obj.get_parent()
-					obj = obj.get_parent()
-					normal = result.normal
-					rotating = true
+				normal = result.normal
+				rotating = true
 			else:
 				last_mouse_pos = Vector2.ZERO
 				obj = null
 				normal = null
 				rotating = false
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_RIGHT:
+				grabbed = true
+				last_mouse_pos = event.position 
+			else:
+				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+					obj.rotate_z(-1 * 0.1)
+				else:
+					obj.rotate_z(1 * 0.1)
 		else:
-			if event.pressed:
-				# Cast a ray from the camera through the mouse cursor
-				if result.size() != 0:
-					obj = result.collider
-					obj = obj.get_parent()
-					obj = obj.get_parent()
-					if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-						obj.rotate_z(-1 * 0.1)
-					else:
-						obj.rotate_z(1 * 0.1)
+			if event.button_index == MOUSE_BUTTON_RIGHT:
+				last_mouse_pos = Vector2.ZERO
+				grabbed = false
 
 
 	# Handle mouse motion when in “rotating” mode
 	elif event is InputEventMouseMotion and rotating:
 		var mouse_delta = event.position - last_mouse_pos
 		last_mouse_pos = event.position
-		print(normal)
 		# Y-axis (up) rotation for horizontal mouse movement
 		if abs(mouse_delta.y) > abs(mouse_delta.x):
 			rotate_vertical(mouse_delta)
 		else:
 			rotate_horizontal(mouse_delta)
-		# X-axis (sideways) rotation for vertical mouse movement
-		#obj.rotate_x(-mouse_delta.y * rotation_speed)
+	elif event is InputEventMouseMotion and grabbed:
+		var mouse_delta = event.position - last_mouse_pos
+		last_mouse_pos = event.position
+
+		# Optional: Add a small threshold to prevent noise
+		if abs(mouse_delta.y) > 0.1:
+			obj.position += Vector3(0, -0.001 * mouse_delta.y, 0)
+		if abs(mouse_delta.x) > 0.1:
+			obj.position += Vector3(0.001 * mouse_delta.x, 0, 0)

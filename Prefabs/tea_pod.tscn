@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx6bxj5ml5w7w"]
+[gd_scene load_steps=4 format=3 uid="uid://ciltpt8q083y1"]
 
 [ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_2ijq8"]
 [ext_resource type="ArrayMesh" uid="uid://cxlj34qce58ym" path="res://Models/tea_pot.obj" id="1_2726i"]
@@ -10,7 +10,7 @@ size = Vector3(5.07993, 4.16, 6.71811)
 [node name="Node3D" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(-0.463787, 0.443284, -0.767073, 0.352827, 0.886616, 0.299041, 0.812659, -0.131953, -0.567604, 0, 0, -0.145)
+transform = Transform3D(-0.463787, 0.443284, -0.767073, 0.352827, 0.886616, 0.299041, 0.812659, -0.131953, -0.567604, 0, 0, 0)
 script = ExtResource("1_2ijq8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
