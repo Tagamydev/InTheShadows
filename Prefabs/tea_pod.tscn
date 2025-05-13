@@ -7,3 +7,6 @@
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.199798, 0, 0.00897844, 0.00133903, 0.197763, -0.0297976, -0.00887803, 0.0298277, 0.197564, 0, 0, 0)
 mesh = ExtResource("1_2726i")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+use_collision = true
