@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cenxpejf0m20"]
-
-[ext_resource type="ArrayMesh" uid="uid://cxlj34qce58ym" path="res://Models/tea_pot.obj" id="1_08tt5"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_08tt5")

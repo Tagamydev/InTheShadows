@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="InTheShadows"
-run/main_scene="uid://cu7exuu6wo3lh"
+run/main_scene="uid://blnvxww76yequ"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
