@@ -8,6 +8,7 @@ var last_mouse_pos: Vector2 = Vector2.ZERO
 var	obj = null;
 var	normal = null;
 
+
 func rotate_vertical(mouse_delta):
 	var rotation_speed := 0.01
 	if abs(normal.x) > 0.3 && abs(normal.z) > 0.5:
@@ -28,14 +29,15 @@ func rotate_vertical(mouse_delta):
 			obj.rotate_x(1 * rotation_speed)
 		if mouse_delta.y < 0:
 			obj.rotate_x(-1 * rotation_speed)
-	#calculate_rot()
-	
+
+
 func rotate_horizontal(mouse_delta):
 	var rotation_speed := 0.05
 	if mouse_delta.x > 0:
 		obj.rotate_y(1 * rotation_speed)
 	if mouse_delta.x < 0:
 		obj.rotate_y(-1 * rotation_speed)
+
 
 func _ray_cast(event):
 	var camera = get_viewport().get_camera_3d()
@@ -46,7 +48,7 @@ func _ray_cast(event):
 	var ray = PhysicsRayQueryParameters3D.create(from, to)
 	var result = space_state.intersect_ray(ray)
 	return result;
-	
+
 
 func _input(event):
 	# Handle mouse button presses
@@ -81,9 +83,6 @@ func _input(event):
 					else:
 						obj.rotate_z(1 * 0.1)
 
-	elif event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_WHEEL_DOWN or event.button_index == MOUSE_BUTTON_WHEEL_UP):
-		if event.pressed:
-			print("wheeelllll")
 
 	# Handle mouse motion when in “rotating” mode
 	elif event is InputEventMouseMotion and rotating:
