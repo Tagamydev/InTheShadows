@@ -10,10 +10,24 @@ var	normal = null;
 
 func rotate_vertical(mouse_delta):
 	var rotation_speed := 0.01
-	if mouse_delta.y > 0:
-		obj.rotate_x(1 * rotation_speed)
-	if mouse_delta.y < 0:
-		obj.rotate_x(-1 * rotation_speed)
+	if abs(normal.x) > 0.3 && abs(normal.z) > 0.5:
+		if mouse_delta.y > 0:
+			obj.rotate_z(1 * rotation_speed)
+			obj.rotate_x(1 * rotation_speed)
+		if mouse_delta.y < 0:
+			obj.rotate_z(-1 * rotation_speed)
+			obj.rotate_x(-1 * rotation_speed)
+		return
+	if abs(normal.x) > abs(normal.z):
+		if mouse_delta.y > 0:
+			obj.rotate_z(1 * rotation_speed)
+		if mouse_delta.y < 0:
+			obj.rotate_z(-1 * rotation_speed)
+	else:
+		if mouse_delta.y > 0:
+			obj.rotate_x(1 * rotation_speed)
+		if mouse_delta.y < 0:
+			obj.rotate_x(-1 * rotation_speed)
 	#calculate_rot()
 	
 func rotate_horizontal(mouse_delta):
