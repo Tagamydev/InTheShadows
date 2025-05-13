@@ -8,28 +8,12 @@ var last_mouse_pos: Vector2 = Vector2.ZERO
 var	obj = null;
 var	normal = null;
 
-func minVector(vector):
-	var	result;
-	if vector.x > vector.y:
-		result = vector.x
-	else:
-		result = vector.y
-	if result > vector.z:
-		return result
-	return vector.z
-
-func calculate_rot():
-	var rotation_speed := 0.01
-	var min = minVector(normal)
-	if normal.z != min:
-		obj.rotate_x(1 * rotation_speed) 
-	#if normal.y != min:
-		#obj.rotate_y(1 * rotation_speed)
-	if normal.x != min:
-		obj.rotate_z(1 * rotation_speed)
-
 func rotate_vertical(mouse_delta):
-	obj.rotate(Vector3(0.5, 0, 0), 1 * 0.01)
+	var rotation_speed := 0.01
+	if mouse_delta.y > 0:
+		obj.rotate_x(1 * rotation_speed)
+	if mouse_delta.y < 0:
+		obj.rotate_x(-1 * rotation_speed)
 	#calculate_rot()
 	
 func rotate_horizontal(mouse_delta):
