@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://blnvxww76yequ"]
 
 [ext_resource type="PackedScene" uid="uid://d1wtbo8xagw1f" path="res://Prefabs/Camera.tscn" id="1_4te2q"]
-[ext_resource type="Texture2D" uid="uid://cbw0dnpr4tb5m" path="res://Textures/checker-map_tho.png" id="2_4te2q"]
+[ext_resource type="ArrayMesh" uid="uid://cxlj34qce58ym" path="res://Models/tea_pot.obj" id="2_4te2q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,8 +17,9 @@ tonemap_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_aygce"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1p36"]
-albedo_texture = ExtResource("2_4te2q")
+[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
+margin = 0.694
+size = Vector3(5.07993, 4.16, 6.71811)
 
 [node name="Level000" type="Node3D"]
 
@@ -34,16 +35,29 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -1)
 mesh = SubResource("QuadMesh_aygce")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 2.75497)
 shadow_enabled = true
-spot_range = 11.584
-spot_attenuation = 0.32
-spot_angle = 13.0
+spot_range = 48.324
+spot_attenuation = 0.12
+spot_angle = 12.99
 
 [node name="Camera" parent="." instance=ExtResource("1_4te2q")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-use_collision = true
-material = SubResource("StandardMaterial3D_q1p36")
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.53405)
+
+[node name="Node3D" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.145)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Node3D"]
+transform = Transform3D(0.0998977, -0.000223246, 0.00451145, 0.0006943, 0.0994496, -0.0104529, -0.00446328, 0.0104735, 0.0993499, 0, 0, -0.145)
+mesh = ExtResource("2_4te2q")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, -1.41561e-07, 0, 1, 0, 0, 0, 1, 0.299243, 0, 1.25533)
+shape = SubResource("BoxShape3D_2726i")
 
 [editable path="Camera"]
