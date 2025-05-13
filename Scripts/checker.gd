@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var obj = self
-@onready var first_rotation = obj.rotation_degrees
+@onready var first_rotation = Vector3(0, 0, 0)
 
 func _init():
 	print()
@@ -25,3 +25,4 @@ func _check_rotation():
 
 func _process(delta):
 	_check_rotation()
+	
