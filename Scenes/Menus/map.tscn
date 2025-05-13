@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf78kd1yegbsd"]
+[gd_scene load_steps=6 format=3 uid="uid://cf78kd1yegbsd"]
+
+[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="1_pcra1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -14,7 +16,8 @@ tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hke2f"]
 
-[node name="Level000" type="Node3D"]
+[node name="TestLevel" type="Node3D"]
+script = ExtResource("1_pcra1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q611x")
