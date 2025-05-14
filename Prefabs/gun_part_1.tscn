@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvdn138rbfg6f"]
+
+[ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_g00oc"]
+[ext_resource type="ArrayMesh" uid="uid://cymjtq6bc67pc" path="res://Models/gun_part1.obj" id="2_bpvwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
+margin = 0.694
+size = Vector3(2.79098, 1.70054, 2.43575)
+
+[node name="gun_part1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14, 0.085, 1.534)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_g00oc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.099197, -0.00685552, 0.010626, 0.00680125, 0.0997645, 0.000872654, -0.0106608, -0.000142945, 0.0994301, 0.175, -0.035, 0)
+mesh = ExtResource("2_bpvwe")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 3.83705e-07, 0, 1, 1.17719e-06, 3.72529e-09, 0, 1, -1.26324, 0.245773, -0.592712)
+shape = SubResource("BoxShape3D_2726i")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfe6p2k28r3tv"]
+
+[ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_uwagq"]
+[ext_resource type="ArrayMesh" uid="uid://tw2hi2cm8okp" path="res://Models/crocodilo_part2.obj" id="2_d6fr8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
+margin = 0.694
+size = Vector3(5.07993, 5.33732, 4.03191)
+
+[node name="Node3D2" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.02, 1.534)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_uwagq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.000822423, -0.00207224, -0.0399378, -0.00104564, 0.0399315, -0.00209344, 0.0399779, 0.00108706, 0.000766844, 0, 0, -0.145)
+mesh = ExtResource("2_d6fr8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, -1.41561e-07, 0, 1, 0, 0, 0, 1, 0.299243, 0, 1.25533)
+shape = SubResource("BoxShape3D_2726i")
