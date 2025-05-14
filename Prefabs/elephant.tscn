@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf52x7jhtiapa"]
+
+[ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_i7dy6"]
+[ext_resource type="ArrayMesh" uid="uid://fh7fsf01cwnd" path="res://Models/elephant.obj" id="2_xb87p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
+margin = 0.694
+size = Vector3(5.07993, 5.33732, 4.03191)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.53405)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-0.423543, -0.669031, 0.610744, 0.359447, 0.494736, 0.791224, -0.83151, 0.554647, 0.0309389, 0, 0, 0)
+script = ExtResource("1_i7dy6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0692739, -0.00791459, 0.00620345, 0.00609116, -0.00133388, -0.0697217, 0.00800133, 0.0695383, -0.000631342, 0, 0.065, 0.005)
+mesh = ExtResource("2_xb87p")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 1.11759e-07, -1.19209e-07, -2.23517e-08, 0.999998, -7.45058e-09, 2.98023e-08, 1.05053e-06, 1, 0.29924, 0.58866, -0.0877714)
+shape = SubResource("BoxShape3D_2726i")

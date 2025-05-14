@@ -12,6 +12,8 @@ var end = false
 
 func _end():
 	SignalBus.solved.emit()
+	end = true
+	finish = true
 
 
 func _ready():
@@ -24,6 +26,7 @@ func lerp_animation(delta):
 	rotation = lerp(end_rotation, Vector3(0, 0, 0), animation_frame)
 	if animation_frame >= 1:
 		end = true
+		finish = false
 
 
 func _check_rotation():
@@ -53,9 +56,9 @@ func _check_rotation():
 
 
 func _process(delta):
-	if not finish:
+	if not finish and not end:
 		_check_rotation()
-	elif not end:
+	if finish and not end:
 		lerp_animation(delta)
-	elif end:
+	if end and not finish:
 		_end()

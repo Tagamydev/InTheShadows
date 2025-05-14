@@ -68,7 +68,16 @@ func _input(event):
 			obj = obj.get_parent()
 			obj = obj.get_parent()
 		else:
-			return
+			if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+				last_mouse_pos = Vector2.ZERO
+				obj = null
+				normal = null
+				rotating = false
+			elif event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
+				last_mouse_pos = Vector2.ZERO
+				grabbed = false
+			else:
+				return
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				normal = result.normal

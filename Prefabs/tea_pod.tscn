@@ -5,9 +5,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
 margin = 0.694
-size = Vector3(5.07993, 4.16, 6.71811)
+size = Vector3(5.07993, 5.33732, 4.03191)
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.534)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(-0.463787, 0.443284, -0.767073, 0.352827, 0.886616, 0.299041, 0.812659, -0.131953, -0.567604, 0, 0, 0)
