@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blnvxww76yequ"]
+[gd_scene load_steps=24 format=3 uid="uid://blnvxww76yequ"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_ovt37"]
 [ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="2_x0mv3"]
@@ -6,23 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bsidisetbtbld" path="res://Textures/weathered_planks_diff_1k.jpg" id="4_x0mv3"]
 [ext_resource type="ArrayMesh" uid="uid://d1xpu8ekygwa2" path="res://Models/ShipScene.obj" id="5_pgtsq"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="6_pgtsq"]
-
-[sub_resource type="Curve" id="Curve_pgtsq"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.676471, 0.988764), 1.4, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_xdu2t"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.629412, 1), 1.4, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_g018d"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.670588, 1), 1.4, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_x2ky3"]
-curve_x = SubResource("Curve_pgtsq")
-curve_y = SubResource("Curve_xdu2t")
-curve_z = SubResource("Curve_g018d")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -34,15 +17,21 @@ sky_material = SubResource("ProceduralSkyMaterial_aygce")
 [sub_resource type="Environment" id="Environment_q611x"]
 background_mode = 2
 sky = SubResource("Sky_stqnc")
+ambient_light_source = 2
+ambient_light_color = Color(0.298452, 0.377685, 0.410462, 1)
 tonemap_mode = 2
 ssao_radius = 7.4
+glow_intensity = 1.8
+glow_bloom = 0.1
 fog_enabled = true
 adjustment_enabled = true
-adjustment_contrast = 1.37
-adjustment_saturation = 1.5
-adjustment_color_correction = SubResource("CurveXYZTexture_x2ky3")
+adjustment_contrast = 1.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_aygce"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2ky3"]
+diffuse_mode = 2
+albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
 margin = 0.694
@@ -50,12 +39,72 @@ size = Vector3(5.07993, 5.33732, 4.03191)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g018d"]
 albedo_texture = ExtResource("4_x0mv3")
+ao_light_affect = 0.45
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdu2t"]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.635294, 0.576471, 0.529412, 0.0196078)
 grow_amount = -0.34
+
+[sub_resource type="Curve" id="Curve_pgtsq"]
+_data = [Vector2(0, 0.359551), 0.0, 0.0, 0, 0, Vector2(0.493151, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xdu2t"]
+curve = SubResource("Curve_pgtsq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_27pap"]
+emission_shape_offset = Vector3(0, -0.26, 1.775)
+emission_shape_scale = Vector3(0.215, 0.15, 0.05)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = -0.01
+initial_velocity_max = 0.01
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_xdu2t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4cts"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_etx6e"]
+material = SubResource("StandardMaterial3D_i4cts")
+size = Vector2(0.01, 0.01)
+
+[sub_resource type="Curve" id="Curve_g018d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.534247, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_x2ky3"]
+curve = SubResource("Curve_g018d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y8ow1"]
+emission_shape_offset = Vector3(0, -0.35, -0.645)
+emission_shape_scale = Vector3(1, 0.98, 0.79)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -360.0
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_x2ky3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2bnbj"]
+size = Vector2(0.001, 0.001)
 
 [node name="TestLevel" type="Node3D"]
 
@@ -73,8 +122,10 @@ mesh = SubResource("QuadMesh_aygce")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 2.75497)
+light_color = Color(1, 0.815686, 0.643137, 1)
 light_energy = 8.619
 shadow_enabled = true
+shadow_blur = 10.0
 spot_attenuation = 1.45
 spot_angle = 14.7
 
@@ -93,6 +144,7 @@ script = ExtResource("2_x0mv3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Node3D"]
 transform = Transform3D(0.0998977, -0.000223245, 0.00451145, 0.0006943, 0.0994496, -0.0104529, -0.00446328, 0.0104735, 0.0993499, 0, 0, -0.145)
+material_override = SubResource("StandardMaterial3D_x2ky3")
 mesh = ExtResource("3_pgtsq")
 skeleton = NodePath("../..")
 
@@ -108,15 +160,24 @@ material_override = SubResource("StandardMaterial3D_g018d")
 mesh = ExtResource("5_pgtsq")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43013, 0.830091, 0.554659)
-light_energy = 0.06
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04056, 0.446644, 0.554659)
+light_color = Color(0.847136, 0.969035, 0.906667, 1)
+light_energy = 0.1
 light_specular = 0.0
 shadow_enabled = true
-omni_range = 2.51144
+omni_range = 2.61398
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478, 1.124)
+light_color = Color(0.352306, 0.890951, 1, 1)
+light_energy = 0.214
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 0.923938
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0271822, 0.0987293, -0.330867)
-light_energy = 0.19
+light_energy = 0.481
 shadow_enabled = true
 distance_fade_begin = 2926.7
 omni_range = 1.41091
@@ -135,3 +196,19 @@ mesh = ExtResource("6_pgtsq")
 transform = Transform3D(1.365, 0, 0, 0, -0.13736, -1.39321, 0, 2.71152, -0.0705771, 0.044, 0.008, 0)
 material_override = SubResource("StandardMaterial3D_xdu2t")
 mesh = ExtResource("6_pgtsq")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.328893, 0.470406)
+amount = 100
+lifetime = 7.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_27pap")
+draw_pass_1 = SubResource("QuadMesh_etx6e")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.328893, 0.470406)
+amount = 300
+lifetime = 8.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_y8ow1")
+draw_pass_1 = SubResource("QuadMesh_2bnbj")
