@@ -1,34 +1,101 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf78kd1yegbsd"]
+[gd_scene load_steps=11 format=3 uid="uid://cf78kd1yegbsd"]
 
-[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="1_pcra1"]
+[ext_resource type="ArrayMesh" uid="uid://bxwvyslg5rl1n" path="res://Models/test_cube_fliped.obj" id="1_pcra1"]
+[ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_qy7m1"]
+[ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_nt048"]
+[ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_dofvy"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_stqnc"]
-sky_material = SubResource("ProceduralSkyMaterial_aygce")
-
-[sub_resource type="Environment" id="Environment_q611x"]
+[sub_resource type="Environment" id="Environment_nt048"]
 background_mode = 2
-sky = SubResource("Sky_stqnc")
-tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.1
+glow_bloom = 1.0
+fog_enabled = true
+fog_light_color = Color(0.259898, 0.363781, 0.440208, 1)
+fog_density = 0.2205
+fog_height_density = 1.4
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hke2f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dofvy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ea5k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4c41"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5igtb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dofvy"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="TestLevel" type="Node3D"]
-script = ExtResource("1_pcra1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_q611x")
+environment = SubResource("Environment_nt048")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0, 0, 0, 1)
+light_energy = 0.0
 shadow_enabled = true
+shadow_bias = 1.09
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.81532, -0.0945965, -0.571231, 0.0689842, 0.995407, -0.0663792, 0.574887, 0.0147144, 0.818101, -1.67121, -0.173346, 1.84338)
+fov = 57.4287
+
+[node name="Maps" type="Node3D" parent="."]
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0.27, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.843, 0, 0, 0, 2.843, 0, 0, 0, 2.843, 0, 2.17963, 0)
+material_override = SubResource("StandardMaterial3D_dofvy")
+mesh = ExtResource("1_pcra1")
+skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_hke2f")
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.07, 0, -0.645, 0)
+material_override = SubResource("StandardMaterial3D_5ea5k")
+mesh = ExtResource("2_qy7m1")
 skeleton = NodePath("../DirectionalLight3D")
 
-[node name="Camera3D" type="Camera3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.36031, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.0533433, -0.645, 0)
+visible = false
+mesh = ExtResource("3_nt048")
+
+[node name="TestShader" parent="." instance=ExtResource("4_dofvy")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633054, 0.297457, -1.51784)
+visible = false
+omni_range = 0.64951
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.870041, 0.182909, -1.96953)
+material_override = SubResource("StandardMaterial3D_a4c41")
+mesh = SubResource("SphereMesh_5igtb")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.575, 0, 0, 0, 0.575, 0, 0, 0, 0.575, 0.969832, -0.244931, 0.388164)
+texture = SubResource("ViewportTexture_dofvy")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+size = Vector2i(140, 35)
+
+[node name="Button" type="Button" parent="Sprite3D/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.104057, 0.577732, 1)
+text = "Want some Tea?"
+
+[editable path="TestShader"]

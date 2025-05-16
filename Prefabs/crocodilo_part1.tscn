@@ -1,26 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://2ksgd08on8pe"]
+[gd_scene load_steps=6 format=3 uid="uid://2ksgd08on8pe"]
 
 [ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_p5k0l"]
+[ext_resource type="Texture2D" uid="uid://b3pkxwfgn4qr" path="res://Textures/CrocodilePart1.png" id="2_804vn"]
 [ext_resource type="ArrayMesh" uid="uid://bknpqdujk8lwt" path="res://Models/crocodilo_part1.obj" id="2_wltvf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j32d5"]
+albedo_texture = ExtResource("2_804vn")
+metallic = 1.0
+metallic_texture = ExtResource("2_804vn")
+emission_enabled = true
+emission = Color(5.29438e-07, 0.41106, 0.361831, 1)
+emission_energy_multiplier = 0.25
+emission_texture = ExtResource("2_804vn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
 margin = 0.694
-size = Vector3(5.07993, 5.33732, 4.03191)
+size = Vector3(4.05076, 1.90641, 3.07023)
 
 [node name="Node3D" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095, 0.08, 1.534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 1.376)
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-0.799055, -0.458936, 0.388443, -0.216636, -0.382904, -0.898028, 0.560874, -0.801725, 0.206539, -0.515, -0.095, 0)
 script = ExtResource("1_p5k0l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.00576388, -0.0024125, -0.0242066, 0.00126001, 0.024873, -0.0021789, 0.0242938, -0.000717661, 0.00585618, 0, 0, 0)
+transform = Transform3D(0.0999998, 0, 0, 0, 0.0999998, 0, 0, 0, 0.1, 0, 0, 0.14)
+material_override = SubResource("StandardMaterial3D_j32d5")
 mesh = ExtResource("2_wltvf")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, -1.41561e-07, 0, 1, 0, 0, 0, 1, 0.299243, 0, 1.25533)
+transform = Transform3D(0.999999, -1.78814e-07, -5.06639e-07, -8.64267e-07, 1, 2.83122e-07, 5.21541e-08, 1.3411e-07, 1, 0.0402164, 0.383305, -1.22594)
 shape = SubResource("BoxShape3D_2726i")

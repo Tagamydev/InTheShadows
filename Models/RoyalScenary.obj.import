@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvg5x8ldw2g08"
+path="res://.godot/imported/RoyalScenary.obj-ba33fbf6e354a8d92da119b2d0ac4ae8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RoyalScenary.obj-ba33fbf6e354a8d92da119b2d0ac4ae8.mesh"]
+
+source_file="res://Models/RoyalScenary.obj"
+dest_files=["res://.godot/imported/RoyalScenary.obj-ba33fbf6e354a8d92da119b2d0ac4ae8.mesh", "res://.godot/imported/RoyalScenary.obj-ba33fbf6e354a8d92da119b2d0ac4ae8.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

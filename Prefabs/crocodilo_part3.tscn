@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5y5t2weiw64v"]
+
+[ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_k447g"]
+[ext_resource type="Texture2D" uid="uid://dck0k6llbn2hr" path="res://Textures/CrocodilePart2.png" id="2_ieohf"]
+[ext_resource type="ArrayMesh" uid="uid://tw2hi2cm8okp" path="res://Models/crocodilo_part2.obj" id="3_b0nl8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f42i"]
+albedo_texture = ExtResource("2_ieohf")
+emission_enabled = true
+emission = Color(3.24883e-07, 0.217519, 0.2859, 1)
+emission_energy_multiplier = 0.4
+emission_texture = ExtResource("2_ieohf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
+margin = 0.694
+size = Vector3(1.824, 1.17979, 1.36068)
+
+[node name="Node3D2" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.085, 0.075, 1.514)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.878909, -0.218453, -0.424024, 0.424024, 0.76496, 0.48481, 0.218453, -0.6059, 0.76496, 0.165, 0.155, 0)
+script = ExtResource("1_k447g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0999845, 0.00174524, 0, -0.00174524, 0.0999846, 0, 0, 0, 0.1, -0.085, 0, 0)
+material_override = SubResource("StandardMaterial3D_0f42i")
+mesh = ExtResource("3_b0nl8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 2.98023e-08, -1.19209e-07, 1.49012e-08, 1, -2.98023e-08, -2.98023e-08, 0, 1, 0.97208, -0.10591, -0.0802889)
+shape = SubResource("BoxShape3D_2726i")

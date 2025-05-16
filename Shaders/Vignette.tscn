@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ie5ov2l1a0rj"]
+
+[ext_resource type="Shader" uid="uid://dwkphlw2qhf32" path="res://Shaders/vignette.gdshader" id="1_aycu8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jibcp"]
+shader = ExtResource("1_aycu8")
+shader_parameter/outerRadius = 0.263
+shader_parameter/MainAlpha = 0.15
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="TestShader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jibcp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

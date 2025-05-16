@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciltpt8q083y1"]
+[gd_scene load_steps=6 format=3 uid="uid://ciltpt8q083y1"]
 
 [ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_2ijq8"]
 [ext_resource type="ArrayMesh" uid="uid://cxlj34qce58ym" path="res://Models/tea_pot.obj" id="1_2726i"]
+[ext_resource type="Texture2D" uid="uid://cfb71w355n0xs" path="res://Textures/tea_pod_text.png" id="2_2bhrm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17toq"]
+albedo_texture = ExtResource("2_2bhrm")
+emission_enabled = true
+emission = Color(0.300013, 0.157917, 0, 1)
+emission_energy_multiplier = 0.3
+emission_texture = ExtResource("2_2bhrm")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
 margin = 0.694
@@ -16,6 +24,7 @@ script = ExtResource("1_2ijq8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.0998977, -0.000223246, 0.00451145, 0.0006943, 0.0994496, -0.0104529, -0.00446328, 0.0104735, 0.0993499, 0, 0, -0.145)
+material_override = SubResource("StandardMaterial3D_17toq")
 mesh = ExtResource("1_2726i")
 skeleton = NodePath("../..")
 

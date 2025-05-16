@@ -1,26 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfe6p2k28r3tv"]
+[gd_scene load_steps=6 format=3 uid="uid://dfe6p2k28r3tv"]
 
 [ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_uwagq"]
-[ext_resource type="ArrayMesh" uid="uid://tw2hi2cm8okp" path="res://Models/crocodilo_part2.obj" id="2_d6fr8"]
+[ext_resource type="Texture2D" uid="uid://8yigjr3gfgnj" path="res://Textures/CrocodilePart3.png" id="2_d6fr8"]
+[ext_resource type="ArrayMesh" uid="uid://lp0ng8n8w0rl" path="res://Models/crocodilo_part3.obj" id="3_l4fq6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swvig"]
+albedo_texture = ExtResource("2_d6fr8")
+emission_enabled = true
+emission = Color(0.0101131, 0.204943, 0.316818, 1)
+emission_energy_multiplier = 0.5
+emission_texture = ExtResource("2_d6fr8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
 margin = 0.694
-size = Vector3(5.07993, 5.33732, 4.03191)
+size = Vector3(1.81953, 1.25481, 1.71147)
 
-[node name="Node3D2" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.02, 1.534)
+[node name="Node3D3" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056, 0.08, 1.651)
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.819406, -0.516815, -0.247943, 0.19039, -0.162609, 0.968148, -0.54067, -0.840513, -0.0348462, -0.405, -0.395, 0)
 script = ExtResource("1_uwagq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.000822423, -0.00207224, -0.0399378, -0.00104564, 0.0399315, -0.00209344, 0.0399779, 0.00108706, 0.000766844, 0, 0, -0.145)
-mesh = ExtResource("2_d6fr8")
+transform = Transform3D(0.0999655, -0.00261769, 0, 0.00261759, 0.0999618, 0.000872654, -2.28434e-05, -0.000872353, 0.0999963, 0.05, 0, -0.15)
+material_override = SubResource("StandardMaterial3D_swvig")
+mesh = ExtResource("3_l4fq6")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, -1.41561e-07, 0, 1, 0, 0, 0, 1, 0.299243, 0, 1.25533)
+transform = Transform3D(0.999999, 1.49012e-07, -1.67638e-07, 4.47035e-07, 1, -5.21541e-08, 1.86265e-08, 2.6077e-08, 1, -0.314939, -0.126648, 2.01243)
 shape = SubResource("BoxShape3D_2726i")

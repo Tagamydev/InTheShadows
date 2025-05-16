@@ -1,0 +1,142 @@
+[gd_scene load_steps=12 format=3 uid="uid://cgj4ws367alix"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxwvyslg5rl1n" path="res://Models/test_cube_fliped.obj" id="1_h7q0v"]
+[ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_okam6"]
+[ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_87xb4"]
+[ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_ugulr"]
+[ext_resource type="FontFile" uid="uid://gcb7ahxr532f" path="res://Fonts/Kalam-Light.ttf" id="5_1dd56"]
+[ext_resource type="FontFile" uid="uid://c1pve664e442d" path="res://Fonts/PermanentMarker-Regular.ttf" id="6_2ced8"]
+
+[sub_resource type="Environment" id="Environment_nt048"]
+background_mode = 2
+glow_enabled = true
+glow_intensity = 0.1
+glow_bloom = 1.0
+fog_enabled = true
+fog_light_color = Color(0.259898, 0.363781, 0.440208, 1)
+fog_density = 0.2205
+fog_height_density = 1.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dofvy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ea5k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4c41"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5igtb"]
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nt048")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0, 0, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+shadow_bias = 1.09
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.81532, -0.0945965, -0.571231, 0.0689842, 0.995407, -0.0663792, 0.574887, 0.0147144, 0.818101, -1.67121, -0.173346, 1.84338)
+fov = 57.4287
+
+[node name="Maps" type="Node3D" parent="."]
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0.27, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.843, 0, 0, 0, 2.843, 0, 0, 0, 2.843, 0, 2.17963, 0)
+material_override = SubResource("StandardMaterial3D_dofvy")
+mesh = ExtResource("1_h7q0v")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.07, 0, -0.645, 0)
+material_override = SubResource("StandardMaterial3D_5ea5k")
+mesh = ExtResource("2_okam6")
+skeleton = NodePath("../DirectionalLight3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.0533433, -0.645, 0)
+visible = false
+mesh = ExtResource("3_87xb4")
+
+[node name="TestShader" parent="." instance=ExtResource("4_ugulr")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633054, 0.297457, -1.51784)
+visible = false
+omni_range = 0.64951
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.870041, 0.182909, -1.96953)
+material_override = SubResource("StandardMaterial3D_a4c41")
+mesh = SubResource("SphereMesh_5igtb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 310.0
+offset_top = 223.0
+offset_right = 868.0
+offset_bottom = 347.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.454902)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_1dd56")
+theme_override_font_sizes/font_size = 76
+text = "START"
+flat = true
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 841.0
+offset_top = 469.0
+offset_right = 960.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.227451)
+theme_override_colors/font_color = Color(1, 1, 1, 0.470588)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_1dd56")
+theme_override_font_sizes/font_size = 36
+text = "TEST"
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 57.0
+offset_right = 670.0
+offset_bottom = 417.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = 29
+theme_override_constants/line_separation = -85
+theme_override_fonts/normal_font = ExtResource("6_2ced8")
+theme_override_font_sizes/normal_font_size = 126
+text = "In The 
+Shadows"
+fit_content = true
+
+[editable path="TestShader"]
