@@ -16,11 +16,12 @@ size = Vector3(5.07993, 5.33732, 4.03191)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.53405)
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(-0.423543, -0.669031, 0.610744, 0.359447, 0.494736, 0.791224, -0.83151, 0.554647, 0.0309389, 0, 0, 0)
+transform = Transform3D(-0.95329, -0.298306, 0.0474506, 0.0400303, 0.0309389, 0.99872, -0.299392, 0.953968, -0.0175525, 0, 0, 0)
 script = ExtResource("1_i7dy6")
+enable_asymetry = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.0692739, -0.00791459, 0.00620345, 0.00609116, -0.00133388, -0.0697217, 0.00800133, 0.0695383, -0.000631342, 0, 0.065, 0.005)
+transform = Transform3D(0.0697212, -0.00622228, -0.000486185, -0.00047987, 9.24084e-05, -0.0699983, 0.00622277, 0.0697228, 4.93849e-05, 0, 0.065, 0.005)
 material_override = SubResource("StandardMaterial3D_i7dy6")
 mesh = ExtResource("2_xb87p")
 skeleton = NodePath("../..")

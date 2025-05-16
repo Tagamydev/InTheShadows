@@ -36,7 +36,7 @@ ao_light_affect = 0.45
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdu2t"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.635294, 0.576471, 0.529412, 0.0196078)
+albedo_color = Color(0.64, 0.58016, 0.5312, 0.0431373)
 grow_amount = -0.34
 
 [sub_resource type="Curve" id="Curve_pgtsq"]
@@ -191,3 +191,10 @@ process_material = SubResource("ParticleProcessMaterial_y8ow1")
 draw_pass_1 = SubResource("QuadMesh_2bnbj")
 
 [node name="Node3D" parent="." instance=ExtResource("5_cwhpy")]
+
+[node name="Node3D" parent="Node3D" index="0"]
+threshold_rot_z = 20
+threshold_x = 4.0
+threshold_y = 4.0
+
+[editable path="Node3D"]

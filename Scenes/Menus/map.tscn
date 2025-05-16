@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_qy7m1"]
 [ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_nt048"]
 [ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_dofvy"]
+[ext_resource type="Script" uid="uid://64sa47n541s" path="res://Scripts/Level00.gd" id="5_5ea5k"]
 
 [sub_resource type="Environment" id="Environment_nt048"]
 background_mode = 2
@@ -24,9 +25,6 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5igtb"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_dofvy"]
-viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="TestLevel" type="Node3D"]
 
@@ -76,26 +74,117 @@ transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.870041, 0.18290
 material_override = SubResource("StandardMaterial3D_a4c41")
 mesh = SubResource("SphereMesh_5igtb")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.575, 0, 0, 0, 0.575, 0, 0, 0, 0.575, 0.969832, -0.244931, 0.388164)
-texture = SubResource("ViewportTexture_dofvy")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("5_5ea5k")
+metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
-size = Vector2i(140, 35)
-
-[node name="Button" type="Button" parent="Sprite3D/SubViewport"]
+[node name="Level00" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = 409.0
+offset_top = 122.0
+offset_right = 572.0
+offset_bottom = 158.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hover_pressed_color = Color(1, 0.104057, 0.577732, 1)
-text = "Want some Tea?"
+rotation = 0.109956
+theme_override_colors/font_color = Color(1, 1, 1, 0.286275)
+theme_override_font_sizes/font_size = 20
+text = "Want some tea?"
+flat = true
+
+[node name="Level01" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = 80.0
+offset_right = 316.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0698132
+theme_override_colors/font_color = Color(1, 1, 1, 0.227451)
+theme_override_font_sizes/font_size = 13
+text = "Grey Giant"
+flat = true
+
+[node name="Level02" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = 16.0001
+offset_right = -94.9999
+offset_bottom = 60.0001
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0680978
+theme_override_colors/font_color = Color(1, 1, 1, 0.647059)
+theme_override_font_sizes/font_size = 26
+text = "Spin the World"
+flat = true
+
+[node name="Level03" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -86.0
+offset_right = -264.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0680978
+theme_override_colors/font_color = Color(1, 1, 1, 0.823529)
+theme_override_font_sizes/font_size = 51
+text = "Gator Gaze"
+flat = true
+
+[node name="Level04" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.0
+offset_top = -195.0
+offset_right = 341.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+theme_override_colors/font_color = Color(1, 1, 1, 0.054902)
+theme_override_font_sizes/font_size = 80
+text = "The Answer..."
+flat = true
+
+[connection signal="pressed" from="Control/Level00" to="Control" method="_on_level_00_pressed"]
+[connection signal="pressed" from="Control/Level01" to="Control" method="_on_level_01_pressed"]
+[connection signal="pressed" from="Control/Level02" to="Control" method="_on_level_02_pressed"]
+[connection signal="pressed" from="Control/Level03" to="Control" method="_on_level_03_pressed"]
+[connection signal="pressed" from="Control/Level04" to="Control" method="_on_level_04_pressed"]
 
 [editable path="TestShader"]

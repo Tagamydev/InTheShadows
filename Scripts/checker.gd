@@ -8,7 +8,12 @@ var	end_position = 0
 var end_rotation = 0
 var animation_frame = 0
 var end = false
-
+@export var threshold_rot_x: int = 3
+@export var threshold_rot_y: int = 3
+@export var threshold_rot_z: int = 9
+@export var threshold_x: float = 0.2
+@export var threshold_y: float = 0.09
+@export var enable_asymetry: bool = false
 
 func _end():
 	SignalBus.solved.emit()
@@ -36,13 +41,13 @@ func _check_rotation():
 	var	z = false
 	var posx = false
 	var posy = false
-	var limit = 3
 
-	if abs(now.x - first_rotation.x) < limit:
+	if abs(now.x - first_rotation.x) < threshold_rot_x:
 		x = true
-	if abs(now.y - first_rotation.y) < limit:
+	if abs(now.y - first_rotation.y) < threshold_rot_y:
 		y = true
-	if abs(now.z - first_rotation.z) < limit * 3:
+	var	_z = abs(now.z - first_rotation.z)
+	if _z < threshold_rot_z:
 		z = true
 	if abs(position.x) < 0.2:
 		posx = true

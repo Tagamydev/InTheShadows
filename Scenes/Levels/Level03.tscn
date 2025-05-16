@@ -184,3 +184,12 @@ process_material = SubResource("ParticleProcessMaterial_y8ow1")
 draw_pass_1 = SubResource("QuadMesh_2bnbj")
 
 [node name="Node3D" parent="." instance=ExtResource("5_wgdbf")]
+
+[node name="Node3D" parent="Node3D" index="0"]
+transform = Transform3D(-0.95329, -0.298306, 0.0474506, 0.0400303, 0.0309389, 0.99872, -0.299392, 0.953968, -0.0175525, 0, 0, 0)
+threshold_rot_z = 9
+
+[node name="MeshInstance3D" parent="Node3D/Node3D" index="0"]
+transform = Transform3D(0.0697212, -0.00622228, -0.000486185, -0.00047987, 9.24084e-05, -0.0699983, 0.00622277, 0.0697228, 4.93849e-05, 0, 0.065, 0.005)
+
+[editable path="Node3D"]

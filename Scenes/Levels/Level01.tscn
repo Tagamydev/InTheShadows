@@ -193,6 +193,24 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 
 [node name="Node3D" parent="." instance=ExtResource("7_d5jk2")]
 
+[node name="Node3D" parent="Node3D" index="0"]
+threshold_rot_x = 5
+threshold_rot_y = 5
+threshold_x = 2.0
+threshold_y = 2.0
+
 [node name="Node3D2" parent="." instance=ExtResource("6_gu1ye")]
 
+[node name="Node3D" parent="Node3D2" index="0"]
+threshold_x = 0.5
+threshold_y = 0.2
+
 [node name="Node3D3" parent="." instance=ExtResource("8_ucel3")]
+
+[node name="Node3D" parent="Node3D3" index="0"]
+threshold_x = 0.5
+threshold_y = 0.2
+
+[editable path="Node3D"]
+[editable path="Node3D2"]
+[editable path="Node3D3"]
