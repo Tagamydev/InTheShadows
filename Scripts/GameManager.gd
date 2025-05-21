@@ -10,7 +10,6 @@ func add_solved():
 
 
 func add_to_be_solved():
-	print("hello")
 	to_be_solved = to_be_solved + 1
 	start = true
 
@@ -36,5 +35,3 @@ func _process(delta):
 	if start:
 		if solved == to_be_solved:
 			return_menu()
-	print(solved)
-	print(start)

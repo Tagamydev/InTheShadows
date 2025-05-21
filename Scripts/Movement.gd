@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var only_horizontal: bool = true
+@export var not_movement: bool = true
 var rotating: bool = false
 var grabbed: bool = false
 var last_mouse_pos: Vector2 = Vector2.ZERO
@@ -110,6 +112,8 @@ func _input(event):
 		else:
 			rotate_horizontal(mouse_delta)
 	elif event is InputEventMouseMotion and grabbed:
+		if only_horizontal:
+			return
 		var mouse_delta = event.position - last_mouse_pos
 		last_mouse_pos = event.position
 
