@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://ip3g2a2gb3up"]
+[gd_scene load_steps=22 format=3 uid="uid://b7iho0l5br6cp"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_h0ngc"]
-[ext_resource type="Texture2D" uid="uid://b0sg2thjb5g4w" path="res://Textures/RoyalScenary.png" id="2_q1p52"]
-[ext_resource type="ArrayMesh" uid="uid://bvg5x8ldw2g08" path="res://Models/RoyalScenary.obj" id="3_cwhpy"]
+[ext_resource type="Texture2D" uid="uid://cxqk4iljgct36" path="res://Textures/ChildScene.png" id="2_cwhpy"]
+[ext_resource type="ArrayMesh" uid="uid://32vexsc66qrr" path="res://Models/WallChildScenary.obj" id="3_ss0f5"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="4_36wf2"]
-[ext_resource type="PackedScene" uid="uid://ciltpt8q083y1" path="res://Prefabs/tea_pod.tscn" id="5_cwhpy"]
+[ext_resource type="PackedScene" uid="uid://cf52x7jhtiapa" path="res://Prefabs/elephant.tscn" id="5_h0ngc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,7 +17,7 @@ sky_material = SubResource("ProceduralSkyMaterial_aygce")
 background_mode = 2
 sky = SubResource("Sky_stqnc")
 ambient_light_source = 2
-ambient_light_color = Color(0.464496, 0.388414, 0.327683, 1)
+ambient_light_color = Color(0.389955, 0.417036, 0.349692, 1)
 ambient_light_energy = 0.4
 tonemap_mode = 2
 ssao_radius = 7.4
@@ -26,17 +26,17 @@ glow_bloom = 0.1
 fog_enabled = true
 adjustment_enabled = true
 adjustment_contrast = 1.5
+adjustment_saturation = 0.68
 
 [sub_resource type="QuadMesh" id="QuadMesh_aygce"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g018d"]
-albedo_texture = ExtResource("2_q1p52")
-ao_light_affect = 0.45
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yanek"]
+albedo_texture = ExtResource("2_cwhpy")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdu2t"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.64, 0.58016, 0.5312, 0.0431373)
+albedo_color = Color(0.635294, 0.576471, 0.529412, 0.0196078)
 grow_amount = -0.34
 
 [sub_resource type="Curve" id="Curve_pgtsq"]
@@ -95,12 +95,12 @@ scale_min = 0.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_x2ky3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwhpy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgdbf"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_2bnbj"]
-material = SubResource("StandardMaterial3D_cwhpy")
+material = SubResource("StandardMaterial3D_wgdbf")
 size = Vector2(0.001, 0.001)
 
 [node name="TestLevel" type="Node3D"]
@@ -134,23 +134,16 @@ fov = 35.3848
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344, -1.519, 2.647)
-material_override = SubResource("StandardMaterial3D_g018d")
-mesh = ExtResource("3_cwhpy")
+material_override = SubResource("StandardMaterial3D_yanek")
+mesh = ExtResource("3_ss0f5")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5808, 0.446644, 0.554659)
-light_color = Color(1, 0.988084, 0.831357, 1)
-light_energy = 0.2
+light_color = Color(0.923778, 1, 0.963966, 1)
+light_energy = 0.3
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 4.11781
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478, 1.124)
-light_energy = 0.214
-light_specular = 0.0
-shadow_enabled = true
-omni_range = 0.923938
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0271822, 0.0987293, -0.330867)
@@ -190,11 +183,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_y8ow1")
 draw_pass_1 = SubResource("QuadMesh_2bnbj")
 
-[node name="Node3D" parent="." instance=ExtResource("5_cwhpy")]
-
-[node name="Node3D" parent="Node3D" index="0"]
-threshold_rot_z = 20
-threshold_x = 4.0
-threshold_y = 4.0
+[node name="Node3D" parent="." instance=ExtResource("5_h0ngc")]
 
 [editable path="Node3D"]

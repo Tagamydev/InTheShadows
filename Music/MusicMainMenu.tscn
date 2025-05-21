@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ounvllp1t6h"]
+
+[ext_resource type="AudioStream" uid="uid://do6vxkkulxqpm" path="res://Music/mainMenu.wav" id="1_hgi42"]
+
+[node name="MusicMainMenu" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hgi42")
+volume_db = -10.306
+autoplay = true
