@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ip3g2a2gb3up"]
+[gd_scene load_steps=24 format=3 uid="uid://ip3g2a2gb3up"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_d5jk2"]
 [ext_resource type="Texture2D" uid="uid://b0sg2thjb5g4w" path="res://Textures/RoyalScenary.png" id="2_gxsi4"]
 [ext_resource type="ArrayMesh" uid="uid://bvg5x8ldw2g08" path="res://Models/RoyalScenary.obj" id="3_rkq7q"]
 [ext_resource type="PackedScene" uid="uid://ciltpt8q083y1" path="res://Prefabs/tea_pod.tscn" id="5_gu1ye"]
+[ext_resource type="AudioStream" uid="uid://dno1ygbtc3i7i" path="res://Music/room00.wav" id="6_rkq7q"]
+[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="7_gu1ye"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="8_kt2x8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
@@ -196,5 +198,17 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 threshold_rot_z = 20
 threshold_x = 4.0
 threshold_y = 4.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rkq7q")
+volume_db = -15.0
+autoplay = true
+
+[node name="GameManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_gu1ye")
 
 [editable path="Node3D"]

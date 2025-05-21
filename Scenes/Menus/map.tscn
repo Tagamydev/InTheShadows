@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf78kd1yegbsd"]
+[gd_scene load_steps=12 format=3 uid="uid://cf78kd1yegbsd"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxwvyslg5rl1n" path="res://Models/test_cube_fliped.obj" id="1_pcra1"]
 [ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_qy7m1"]
 [ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_nt048"]
 [ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_dofvy"]
-[ext_resource type="Script" uid="uid://64sa47n541s" path="res://Scripts/Level00.gd" id="5_5ea5k"]
+[ext_resource type="Script" uid="uid://64sa47n541s" path="res://Scripts/MapController.gd" id="5_5ea5k"]
+[ext_resource type="Script" uid="uid://yrfewp8q7bpd" path="res://Scripts/TitleAnimation.gd" id="6_a4c41"]
 
 [sub_resource type="Environment" id="Environment_nt048"]
 background_mode = 2
@@ -104,6 +105,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.286275)
 theme_override_font_sizes/font_size = 20
 text = "Want some tea?"
 flat = true
+script = ExtResource("6_a4c41")
+max_alpha = 0.3
 
 [node name="Level01" type="Button" parent="Control"]
 layout_mode = 1
@@ -123,6 +126,9 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.227451)
 theme_override_font_sizes/font_size = 13
 text = "Grey Giant"
 flat = true
+script = ExtResource("6_a4c41")
+scene_number = 1
+max_alpha = 0.2
 
 [node name="Level02" type="Button" parent="Control"]
 layout_mode = 1
@@ -142,6 +148,10 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.647059)
 theme_override_font_sizes/font_size = 26
 text = "Spin the World"
 flat = true
+script = ExtResource("6_a4c41")
+scene_number = 2
+max_alpha = 0.4
+total_animation_time = 3.0
 
 [node name="Level03" type="Button" parent="Control"]
 layout_mode = 1
@@ -161,6 +171,10 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.823529)
 theme_override_font_sizes/font_size = 51
 text = "Gator Gaze"
 flat = true
+script = ExtResource("6_a4c41")
+scene_number = 3
+max_alpha = 0.6
+total_animation_time = 4.0
 
 [node name="Level04" type="Button" parent="Control"]
 layout_mode = 1
@@ -180,6 +194,10 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.054902)
 theme_override_font_sizes/font_size = 80
 text = "The Answer..."
 flat = true
+script = ExtResource("6_a4c41")
+scene_number = 4
+max_alpha = 0.1
+total_animation_time = 5.0
 
 [connection signal="pressed" from="Control/Level00" to="Control" method="_on_level_00_pressed"]
 [connection signal="pressed" from="Control/Level01" to="Control" method="_on_level_01_pressed"]

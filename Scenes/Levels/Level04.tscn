@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dccm0g2ik3hn8"]
+[gd_scene load_steps=25 format=3 uid="uid://dccm0g2ik3hn8"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_whblq"]
 [ext_resource type="Texture2D" uid="uid://fudb7u517qts" path="res://Textures/DirtyWall.png" id="2_qwntm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5y5t2weiw64v" path="res://Prefabs/crocodilo_part3.tscn" id="6_rltgf"]
 [ext_resource type="PackedScene" uid="uid://dfe6p2k28r3tv" path="res://Prefabs/crocodilo_part2.tscn" id="7_i5uxc"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="8_84epy"]
+[ext_resource type="AudioStream" uid="uid://c0mgdlmlvuyy4" path="res://Music/room04.wav" id="8_whblq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -210,6 +211,12 @@ threshold_y = 0.2
 [node name="Node3D" parent="Node3D3" index="0"]
 threshold_x = 0.5
 threshold_y = 0.2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_whblq")
+volume_db = -15.0
+autoplay = true
+stream_paused = true
 
 [editable path="Node3D"]
 [editable path="Node3D2"]

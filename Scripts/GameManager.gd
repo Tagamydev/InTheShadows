@@ -11,6 +11,7 @@ func add_solved():
 
 func add_to_be_solved():
 	to_be_solved = to_be_solved + 1
+	start = true
 
 
 func start_match():
@@ -18,9 +19,6 @@ func start_match():
 
 
 func return_menu():
-	start = false
-	to_be_solved = 0
-	solved = 0
 	get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
 
 
@@ -33,5 +31,7 @@ func _ready():
 
 func _process(delta):
 	if start:
-		if to_be_solved != 0 and solved == to_be_solved:
-			SignalBus.return_menu.emit(return_menu)
+		if solved == to_be_solved:
+			return_menu()
+	print(solved)
+	print(start)
