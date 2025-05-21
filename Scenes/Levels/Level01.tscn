@@ -210,5 +210,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_gu1ye")
+level_number = 1
 
 [editable path="Node3D"]

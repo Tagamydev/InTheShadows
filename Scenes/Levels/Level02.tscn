@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b7iho0l5br6cp"]
+[gd_scene load_steps=24 format=3 uid="uid://ip3g2a2gb3up"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_h0ngc"]
 [ext_resource type="Texture2D" uid="uid://cxqk4iljgct36" path="res://Textures/ChildScene.png" id="2_cwhpy"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="4_36wf2"]
 [ext_resource type="PackedScene" uid="uid://cf52x7jhtiapa" path="res://Prefabs/elephant.tscn" id="5_h0ngc"]
 [ext_resource type="AudioStream" uid="uid://diuj75f7sp82p" path="res://Music/room01.wav" id="6_ss0f5"]
+[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="7_h0ngc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -190,6 +191,13 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 stream = ExtResource("6_ss0f5")
 volume_db = -15.0
 autoplay = true
-stream_paused = true
+
+[node name="GameManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_h0ngc")
+level_number = 2
 
 [editable path="Node3D"]

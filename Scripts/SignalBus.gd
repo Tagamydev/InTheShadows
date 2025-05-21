@@ -2,7 +2,7 @@ extends Node
 
 var	music_enabled = false
 var	test_mode = false
-var	level_unlocked = 4
+var	level_unlocked = 0
 
 signal solved()
 signal to_be_solved()

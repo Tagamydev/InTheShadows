@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dccm0g2ik3hn8"]
+[gd_scene load_steps=26 format=3 uid="uid://ddah14lvi45em"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_whblq"]
 [ext_resource type="Texture2D" uid="uid://fudb7u517qts" path="res://Textures/DirtyWall.png" id="2_qwntm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dfe6p2k28r3tv" path="res://Prefabs/crocodilo_part2.tscn" id="7_i5uxc"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="8_84epy"]
 [ext_resource type="AudioStream" uid="uid://c0mgdlmlvuyy4" path="res://Music/room04.wav" id="8_whblq"]
+[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="9_rltgf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -216,7 +217,14 @@ threshold_y = 0.2
 stream = ExtResource("8_whblq")
 volume_db = -15.0
 autoplay = true
-stream_paused = true
+
+[node name="GameManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_rltgf")
+level_number = 4
 
 [editable path="Node3D"]
 [editable path="Node3D2"]

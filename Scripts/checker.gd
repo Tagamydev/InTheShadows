@@ -8,6 +8,7 @@ var	end_position = 0
 var end_rotation = 0
 var animation_frame = 0
 var end = false
+var test = false
 @export var threshold_rot_x: int = 3
 @export var threshold_rot_y: int = 3
 @export var threshold_rot_z: int = 9
@@ -16,12 +17,14 @@ var end = false
 @export var enable_asymetry: bool = false
 
 func _end():
+	OS.delay_msec(1000)
 	SignalBus.solved.emit()
 	end = true
 	finish = true
 
 
 func _ready():
+	OS.delay_msec(1000)
 	SignalBus.to_be_solved.emit()
 
 
@@ -61,6 +64,9 @@ func _check_rotation():
 
 
 func _process(delta):
+	if not test:
+		SignalBus.to_be_solved.emit()
+		test = true
 	if not finish and not end:
 		_check_rotation()
 	if finish and not end:

@@ -1,14 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://dh1o7sa650cy2"]
+[gd_scene load_steps=29 format=3 uid="uid://b7iho0l5br6cp"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_wgdbf"]
-[ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="2_iq88g"]
-[ext_resource type="ArrayMesh" uid="uid://hu4qaq051nvf" path="res://Models/globe_base.obj" id="3_8h8ml"]
-[ext_resource type="ArrayMesh" uid="uid://btqk68aycu24k" path="res://Models/globe-earth.obj" id="4_4fhbg"]
+[ext_resource type="PackedScene" uid="uid://cl7jysywvgdof" path="res://Prefabs/globe_part1.tscn" id="2_8h8ml"]
+[ext_resource type="PackedScene" uid="uid://yy3oq3aojlyn" path="res://Prefabs/globe_part2.tscn" id="3_4fhbg"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="4_iq88g"]
 [ext_resource type="Texture2D" uid="uid://bbt2e7m4kpnlj" path="res://Textures/ShipSceneRoom.png" id="5_88j11"]
 [ext_resource type="ArrayMesh" uid="uid://d1xpu8ekygwa2" path="res://Models/ShipScene.obj" id="6_1ijcm"]
 [ext_resource type="ArrayMesh" uid="uid://bfmd78i7ycjli" path="res://Models/ShipSceneProps.obj" id="7_nbct8"]
 [ext_resource type="AudioStream" uid="uid://nghbwylolu6r" path="res://Music/room03.wav" id="9_8h8ml"]
+[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="10_4fhbg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -31,14 +31,6 @@ adjustment_enabled = true
 adjustment_contrast = 1.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_aygce"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2ky3"]
-diffuse_mode = 2
-albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
-margin = 0.694
-size = Vector3(5.07993, 5.33732, 4.03191)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g018d"]
 albedo_texture = ExtResource("5_88j11")
@@ -155,43 +147,25 @@ script = ExtResource("1_wgdbf")
 transform = Transform3D(0.788333, -0.126867, -0.602027, 0, 0.978509, -0.206204, 0.615249, 0.162558, 0.771391, -1.44501, -0.614941, 2.61347)
 fov = 35.3848
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 1.239)
+[node name="Node3D" parent="." instance=ExtResource("2_8h8ml")]
 
-[node name="Node3D" type="Node3D" parent="Node3D"]
-transform = Transform3D(-0.45838, -0.120771, -0.880512, 0.88748, -0.115264, -0.446198, -0.0476034, -0.985966, 0.160016, 0, 0, 0)
-script = ExtResource("2_iq88g")
+[node name="Node3D" parent="Node3D" index="0"]
+transform = Transform3D(-0.45838, -0.120771, -0.880512, 0.88748, -0.115264, -0.446198, -0.0476034, -0.985966, 0.160016, 0, -0.265, 0)
+threshold_rot_x = 5
+threshold_rot_y = 5
+threshold_rot_z = 13
+threshold_y = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Node3D"]
-transform = Transform3D(0.0269959, -0.000471197, 4.11206e-06, 0, 0.000235615, 0.026999, -0.000471215, -0.0269949, 0.00023558, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_x2ky3")
-mesh = ExtResource("3_8h8ml")
-skeleton = NodePath("../..")
+[node name="CollisionShape3D" parent="Node3D/Node3D/MeshInstance3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 3.81842e-08, -2.04891e-07, 1.02445e-08, 0.999999, -1.04308e-07, 6.33299e-08, -7.45058e-08, 0.999999, -0.230438, -0.700582, -4.9054)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Node3D/MeshInstance3D"]
+[node name="Node3D2" parent="." instance=ExtResource("3_4fhbg")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, -1.41561e-07, 0, 1, 0, 0, 0, 1, 0.299243, 0, 1.25533)
-shape = SubResource("BoxShape3D_2726i")
-
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.659)
-
-[node name="Node3D" type="Node3D" parent="Node3D2"]
-transform = Transform3D(0.927451, -0.354376, -0.119378, 0.345502, 0.689951, 0.636078, -0.143046, -0.631177, 0.762334, 0, 0, 0)
-script = ExtResource("2_iq88g")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/Node3D"]
-transform = Transform3D(0.019997, -0.000349035, 3.04597e-06, 0, 0.00017453, 0.0199992, -0.000349048, -0.0199962, 0.000174503, 0, 0, -0.05)
-material_override = SubResource("StandardMaterial3D_x2ky3")
-mesh = ExtResource("4_4fhbg")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D2/Node3D/MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/Node3D/MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, -1.41561e-07, 0, 1, 0, 0, 0, 1, 0.299243, 0, 1.25533)
-shape = SubResource("BoxShape3D_2726i")
+[node name="Node3D" parent="Node3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257671, 0, 0)
+threshold_rot_x = 15
+threshold_rot_y = 15
+threshold_rot_z = 30
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344, -1.519, 2.647)
@@ -261,4 +235,14 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 stream = ExtResource("9_8h8ml")
 volume_db = -15.0
 autoplay = true
-stream_paused = true
+
+[node name="GameManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_4fhbg")
+level_number = 3
+
+[editable path="Node3D"]
+[editable path="Node3D2"]

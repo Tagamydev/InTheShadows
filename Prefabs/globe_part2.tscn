@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://yy3oq3aojlyn"]
+
+[ext_resource type="Script" uid="uid://cpp1udda07f63" path="res://Scripts/checker.gd" id="1_aebu3"]
+[ext_resource type="ArrayMesh" uid="uid://btqk68aycu24k" path="res://Models/globe-earth.obj" id="2_0i0ul"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2ky3"]
+diffuse_mode = 2
+albedo_color = Color(0.393086, 0.393086, 0.393085, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2726i"]
+margin = 0.694
+size = Vector3(13.1306, 19.3128, 15.3779)
+
+[node name="Node3D2" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.659)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.927451, -0.354376, -0.119378, 0.345502, 0.689951, 0.636078, -0.143046, -0.631177, 0.762334, 0, 0, 0)
+script = ExtResource("1_aebu3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.019997, -0.000349035, 3.04597e-06, 0, 0.00017453, 0.0199992, -0.000349048, -0.0199962, 0.000174503, 0, 0, -0.05)
+material_override = SubResource("StandardMaterial3D_x2ky3")
+mesh = ExtResource("2_0i0ul")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(0.999998, 5.96046e-08, -1.41561e-07, 3.67314e-06, 1, 2.38419e-07, 3.71784e-06, 2.98023e-07, 1, 0.431431, 0.985054, 0.394058)
+shape = SubResource("BoxShape3D_2726i")
