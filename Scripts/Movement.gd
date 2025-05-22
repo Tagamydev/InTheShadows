@@ -1,12 +1,15 @@
 extends Node3D
 
-@export var only_horizontal: bool = true
-@export var not_movement: bool = true
+
+@export var only_horizontal: bool = false
+@export var not_movement: bool = false
+var ctrl: bool = false
 var rotating: bool = false
 var grabbed: bool = false
 var last_mouse_pos: Vector2 = Vector2.ZERO
 var	obj = null;
 var	normal = null;
+
 
 func _clean():
 	obj = null
@@ -15,8 +18,10 @@ func _clean():
 	rotating = false
 	grabbed = false
 
+
 func _ready():
 	SignalBus.solved.connect(_clean)
+
 
 func rotate_vertical(mouse_delta):
 	var rotation_speed := 0.01
@@ -58,7 +63,15 @@ func _ray_cast(event):
 	return result;
 
 
-func _input(event):
+func input_key(event):
+	if event.keycode == KEY_CTRL:
+		if event.is_pressed():
+			ctrl = true
+		else:
+			ctrl = false
+
+
+func input_mouse(event):
 	if event is InputEventMouseButton and \
 	(event.button_index == MOUSE_BUTTON_WHEEL_DOWN or \
 	event.button_index == MOUSE_BUTTON_WHEEL_UP or \
@@ -82,6 +95,8 @@ func _input(event):
 				return
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				if only_horizontal:
+					return
 				normal = result.normal
 				rotating = true
 			else:
@@ -95,9 +110,17 @@ func _input(event):
 				last_mouse_pos = event.position 
 			else:
 				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-					obj.rotate_z(-1 * 0.1)
+					if ctrl and not only_horizontal:
+							obj.rotate_z(-1 * 0.1)
+					else:
+							obj.rotate_y(-1 * 0.1)
 				else:
-					obj.rotate_z(1 * 0.1)
+					if ctrl and not only_horizontal:
+							obj.rotate_z(1 * 0.1)
+					else:
+							obj.rotate_y(1 * 0.1)
+
+
 		else:
 			if event.button_index == MOUSE_BUTTON_RIGHT:
 				last_mouse_pos = Vector2.ZERO
@@ -121,3 +144,10 @@ func _input(event):
 			obj.position += Vector3(0, -0.001 * mouse_delta.y, 0)
 		if abs(mouse_delta.x) > 0.1:
 			obj.position += Vector3(0.001 * mouse_delta.x, 0, 0)
+
+
+func _input(event):
+	if event is InputEventMouseButton or event is InputEventMouseMotion:
+		input_mouse(event)
+	else:
+		input_key(event)

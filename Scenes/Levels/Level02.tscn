@@ -129,6 +129,7 @@ spot_angle = 14.7
 
 [node name="Camera" type="Node3D" parent="."]
 script = ExtResource("1_h0ngc")
+not_movement = true
 
 [node name="Camera3D" type="Camera3D" parent="Camera"]
 transform = Transform3D(0.788333, -0.126867, -0.602027, 0, 0.978509, -0.206204, 0.615249, 0.162558, 0.771391, -1.44501, -0.614941, 2.61347)
@@ -189,7 +190,6 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ss0f5")
-volume_db = -15.0
 autoplay = true
 
 [node name="GameManager" type="Control" parent="."]
