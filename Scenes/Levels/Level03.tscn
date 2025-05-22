@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b7iho0l5br6cp"]
+[gd_scene load_steps=35 format=3 uid="uid://b7iho0l5br6cp"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_wgdbf"]
 [ext_resource type="PackedScene" uid="uid://cl7jysywvgdof" path="res://Prefabs/globe_part1.tscn" id="2_8h8ml"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dq2hyq80rkhna" path="res://Scripts/Audio.gd" id="9_1ijcm"]
 [ext_resource type="AudioStream" uid="uid://nghbwylolu6r" path="res://Music/room03.wav" id="9_8h8ml"]
 [ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="10_4fhbg"]
+[ext_resource type="FontFile" uid="uid://gcb7ahxr532f" path="res://Fonts/Kalam-Light.ttf" id="10_nbct8"]
 [ext_resource type="PackedScene" uid="uid://c5hpb7mdm3i6m" path="res://Shaders/blur.tscn" id="11_nbct8"]
 [ext_resource type="Script" uid="uid://c60mmprys8jii" path="res://Scripts/menuButtons.gd" id="12_uffpw"]
 
@@ -119,6 +120,12 @@ emission = Color(1, 1, 1, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_2bnbj"]
 material = SubResource("StandardMaterial3D_mwpmy")
 size = Vector2(0.001, 0.001)
+
+[sub_resource type="Gradient" id="Gradient_5jjrx"]
+colors = PackedColorArray(0, 0, 0, 0.368627, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uffpw"]
+gradient = SubResource("Gradient_5jjrx")
 
 [node name="TestLevel" type="Node3D"]
 
@@ -237,6 +244,46 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_8h8ml")
 script = ExtResource("9_1ijcm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1922.0
+offset_right = -1921.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 4.71239
+scale = Vector2(1000, 1924.02)
+texture = SubResource("GradientTexture1D_uffpw")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -262.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("10_nbct8")
+theme_override_font_sizes/normal_font_size = 81
+text = "Right-click and drag to reposition the object..."
+fit_content = true
+horizontal_alignment = 1
 
 [node name="GameManager" type="Control" parent="."]
 layout_mode = 3
