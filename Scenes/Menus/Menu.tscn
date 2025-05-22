@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgj4ws367alix"]
+[gd_scene load_steps=13 format=3 uid="uid://cgj4ws367alix"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxwvyslg5rl1n" path="res://Models/test_cube_fliped.obj" id="1_h7q0v"]
 [ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_okam6"]
 [ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_87xb4"]
 [ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_ugulr"]
 [ext_resource type="FontFile" uid="uid://gcb7ahxr532f" path="res://Fonts/Kalam-Light.ttf" id="5_1dd56"]
+[ext_resource type="Script" uid="uid://we5gsnauepof" path="res://Scripts/MainMenuMenu.gd" id="5_okam6"]
 [ext_resource type="FontFile" uid="uid://c1pve664e442d" path="res://Fonts/PermanentMarker-Regular.ttf" id="6_2ced8"]
 
 [sub_resource type="Environment" id="Environment_nt048"]
@@ -82,6 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_okam6")
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
@@ -138,5 +140,8 @@ theme_override_font_sizes/normal_font_size = 126
 text = "In The 
 Shadows"
 fit_content = true
+
+[connection signal="button_down" from="Control/Button" to="Control" method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Button2" to="Control" method="_on_button_2_button_down"]
 
 [editable path="TestShader"]
