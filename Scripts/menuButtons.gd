@@ -12,9 +12,11 @@ func _on_button_4_button_down():
 
 
 func _on_button_2_button_down():
+	SignalBus.open_menu.emit()
 	pass # Replace with function body.
 
 
 func _on_button_3_button_down():
+	SignalBus.return_menu.emit()
 	get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
 	pass # Replace with function body.

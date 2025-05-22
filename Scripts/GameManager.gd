@@ -21,11 +21,15 @@ func start_match():
 
 
 func return_menu():
-	if (SignalBus.level_unlocked < level_number):
+	if (SignalBus.level_unlocked < level_number) and solved == to_be_solved:
 		SignalBus.level_unlocked = level_number
 	visible = true
 	finish = true
 	#get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
+
+
+func	hide_menu():
+	visible = false
 
 
 func _ready():
@@ -34,6 +38,7 @@ func _ready():
 	SignalBus.solved.connect(add_solved)
 	SignalBus.return_menu.connect(return_menu)
 	SignalBus.start_match.connect(start_match)
+	SignalBus.open_menu.connect(hide_menu)
 	
 
 func _input(event):

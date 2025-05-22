@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c2l0vj2t5fbti"]
+[gd_scene load_steps=30 format=3 uid="uid://c2l0vj2t5fbti"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_whblq"]
 [ext_resource type="Texture2D" uid="uid://furc6prg3jxu" path="res://Textures/ConcreteTheSCene.png" id="2_whblq"]
@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="8_84epy"]
 [ext_resource type="PackedScene" uid="uid://bw3t834ycli28" path="res://Prefabs/logo-2.tscn" id="8_uburf"]
 [ext_resource type="AudioStream" uid="uid://do6vxkkulxqpm" path="res://Music/mainMenu.wav" id="9_3j5rl"]
+[ext_resource type="Script" uid="uid://dq2hyq80rkhna" path="res://Scripts/Audio.gd" id="10_et8m3"]
 [ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="10_eu600"]
 [ext_resource type="PackedScene" uid="uid://c5hpb7mdm3i6m" path="res://Shaders/blur.tscn" id="11_pjyue"]
 [ext_resource type="Script" uid="uid://c60mmprys8jii" path="res://Scripts/menuButtons.gd" id="12_132vt"]
@@ -220,7 +221,7 @@ threshold_y = 4.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_3j5rl")
-autoplay = true
+script = ExtResource("10_et8m3")
 
 [node name="GameManager" type="Control" parent="."]
 layout_mode = 3

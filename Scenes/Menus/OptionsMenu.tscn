@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://d2qd8uxcs8u2j"]
+[gd_scene load_steps=3 format=3 uid="uid://d2qd8uxcs8u2j"]
+
+[ext_resource type="PackedScene" uid="uid://c5hpb7mdm3i6m" path="res://Shaders/blur.tscn" id="1_6fwcd"]
+[ext_resource type="Script" uid="uid://u6wvwvk43lx" path="res://Scripts/OptionsMenu.gd" id="2_mtov2"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +10,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.00128)
+
+[node name="TestShader" parent="." instance=ExtResource("1_6fwcd")]
+layout_mode = 1
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 2
+offset_left = 1102.0
+offset_top = 592.244
+offset_right = 1146.0
+offset_bottom = 623.244
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_mtov2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -15,9 +32,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -187.0
-offset_top = -286.0
-offset_right = 187.0
-offset_bottom = 286.0
+offset_left = -163.0
+offset_top = -105.0
+offset_right = 163.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Return"
+flat = true
+alignment = 0
+
+[node name="Sound" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Sound"
+flat = true
+alignment = 0
+
+[connection signal="button_down" from="CheckButton" to="CheckButton" method="_on_button_down"]
+[connection signal="button_up" from="CheckButton" to="CheckButton" method="_on_button_up"]
+[connection signal="button_down" from="VBoxContainer/Button2" to="CheckButton" method="_on_button_2_button_down"]

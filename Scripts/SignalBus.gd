@@ -1,6 +1,6 @@
 extends Node
 
-var	music_enabled = false
+var	music_enabled = true
 var	test_mode = false
 var	level_unlocked = 0
 
@@ -13,3 +13,6 @@ signal animation_level_01()
 signal animation_level_02()
 signal animation_level_03()
 signal animation_level_04()
+signal music_on()
+signal music_off()
+signal open_menu()

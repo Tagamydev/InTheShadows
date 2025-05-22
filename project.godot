@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DrawLine="res://Scripts/drawLine.gd"
 SignalBus="*res://Scripts/SignalBus.gd"
+OptionsMenu="*res://Scenes/Menus/OptionsMenu.tscn"
 
 [display]
 

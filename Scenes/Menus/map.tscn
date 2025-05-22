@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf78kd1yegbsd"]
+[gd_scene load_steps=14 format=3 uid="uid://cf78kd1yegbsd"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxwvyslg5rl1n" path="res://Models/test_cube_fliped.obj" id="1_pcra1"]
 [ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_qy7m1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://64sa47n541s" path="res://Scripts/MapController.gd" id="5_5ea5k"]
 [ext_resource type="Script" uid="uid://yrfewp8q7bpd" path="res://Scripts/TitleAnimation.gd" id="6_a4c41"]
 [ext_resource type="AudioStream" uid="uid://do6vxkkulxqpm" path="res://Music/mainMenu.wav" id="7_5igtb"]
+[ext_resource type="Script" uid="uid://dq2hyq80rkhna" path="res://Scripts/Audio.gd" id="8_l48dr"]
 
 [sub_resource type="Environment" id="Environment_nt048"]
 background_mode = 2
@@ -203,6 +204,7 @@ total_animation_time = 5.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5igtb")
 autoplay = true
+script = ExtResource("8_l48dr")
 
 [connection signal="pressed" from="Control/Level00" to="Control" method="_on_level_00_pressed"]
 [connection signal="pressed" from="Control/Level01" to="Control" method="_on_level_01_pressed"]
