@@ -1,18 +1,15 @@
+# SaveGame.gd
 class_name SaveGame
 extends Resource
 
 const SAVE_GAME_PATH := "user://savegame.tres"
 
-var	level: int = 0
-
-func update_level(level_n):
-	level = level_n
-
+@export var level: int = 0
 
 func write_savegame() -> void:
 	ResourceSaver.save(self, SAVE_GAME_PATH)
 
-static func load_savegame() -> Resource:
+static func load_savegame() -> SaveGame:
 	if ResourceLoader.exists(SAVE_GAME_PATH):
-		return load(SAVE_GAME_PATH)
-	return null
+		return load(SAVE_GAME_PATH) as SaveGame
+	return SaveGame.new()
