@@ -196,10 +196,11 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 [node name="Node3D" parent="." instance=ExtResource("5_whblq")]
 
 [node name="Node3D" parent="Node3D" index="0"]
-threshold_rot_x = 5
-threshold_rot_y = 5
-threshold_x = 2.0
-threshold_y = 2.0
+threshold_rot_x = 30
+threshold_rot_y = 30
+threshold_rot_z = 30
+threshold_x = 30.0
+threshold_y = 30.0
 
 [node name="Node3D2" parent="." instance=ExtResource("6_rltgf")]
 
@@ -215,7 +216,6 @@ threshold_y = 0.2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_whblq")
-volume_db = -15.0
 autoplay = true
 
 [node name="GameManager" type="Control" parent="."]

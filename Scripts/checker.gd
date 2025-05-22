@@ -3,18 +3,19 @@ extends Node3D
 @onready var obj = self
 @onready var first_rotation = Vector3(0, 0, 0)
 
-var	finish = false
-var	end_position = 0
-var end_rotation = 0
-var animation_frame = 0
-var end = false
-var test = false
 @export var threshold_rot_x: int = 3
 @export var threshold_rot_y: int = 3
 @export var threshold_rot_z: int = 9
 @export var threshold_x: float = 0.2
 @export var threshold_y: float = 0.09
 @export var enable_asymetry: bool = false
+
+var	finish = false
+var	end_position = 0
+var end_rotation = 0
+var animation_frame = 0
+var end = false
+var test = false
 
 func _end():
 	OS.delay_msec(1000)

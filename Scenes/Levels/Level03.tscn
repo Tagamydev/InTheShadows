@@ -233,7 +233,6 @@ draw_pass_1 = SubResource("QuadMesh_2bnbj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_8h8ml")
-volume_db = -15.0
 autoplay = true
 
 [node name="GameManager" type="Control" parent="."]

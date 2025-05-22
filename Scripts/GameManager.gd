@@ -19,7 +19,8 @@ func start_match():
 
 
 func return_menu():
-	SignalBus.level_unlocked = level_number
+	if (SignalBus.level_unlocked < level_number):
+		SignalBus.level_unlocked = level_number
 	
 	get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
 

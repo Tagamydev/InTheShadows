@@ -202,7 +202,6 @@ total_animation_time = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5igtb")
-volume_db = -15.0
 autoplay = true
 
 [connection signal="pressed" from="Control/Level00" to="Control" method="_on_level_00_pressed"]
