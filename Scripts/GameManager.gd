@@ -4,6 +4,8 @@ var	start = false
 var to_be_solved = 0
 var solved = 0
 @export var level_number: int = 0
+var finish = false
+
 
 func add_solved():
 	solved = solved + 1
@@ -21,16 +23,24 @@ func start_match():
 func return_menu():
 	if (SignalBus.level_unlocked < level_number):
 		SignalBus.level_unlocked = level_number
-	
-	get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
+	visible = true
+	finish = true
+	#get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
 
 
 func _ready():
+	visible = false
 	SignalBus.to_be_solved.connect(add_to_be_solved)
 	SignalBus.solved.connect(add_solved)
 	SignalBus.return_menu.connect(return_menu)
 	SignalBus.start_match.connect(start_match)
 	
+
+func _input(event):
+	if event is InputEventKey:
+		if event.keycode == KEY_ESCAPE and event.is_pressed() and not finish:
+			visible = !visible
+
 
 func _process(delta):
 	if start:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c2l0vj2t5fbti"]
+[gd_scene load_steps=29 format=3 uid="uid://c2l0vj2t5fbti"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_whblq"]
 [ext_resource type="Texture2D" uid="uid://furc6prg3jxu" path="res://Textures/ConcreteTheSCene.png" id="2_whblq"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://do6vxkkulxqpm" path="res://Music/mainMenu.wav" id="9_3j5rl"]
 [ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="10_eu600"]
 [ext_resource type="PackedScene" uid="uid://c5hpb7mdm3i6m" path="res://Shaders/blur.tscn" id="11_pjyue"]
+[ext_resource type="Script" uid="uid://c60mmprys8jii" path="res://Scripts/menuButtons.gd" id="12_132vt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -221,8 +222,6 @@ threshold_y = 4.0
 stream = ExtResource("9_3j5rl")
 autoplay = true
 
-[node name="TestShader" parent="." instance=ExtResource("11_pjyue")]
-
 [node name="GameManager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -238,23 +237,48 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/Control"]
+[node name="TestShader" parent="GameManager" instance=ExtResource("11_pjyue")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 881.5
-offset_top = 469.5
-offset_right = 998.5
-offset_bottom = 570.5
+offset_left = -187.0
+offset_top = -286.0
+offset_right = 187.0
+offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("12_132vt")
 
-[node name="Button" type="Button" parent="GameManager/Control/VBoxContainer"]
+[node name="Button4" type="Button" parent="GameManager/VBoxContainer"]
 layout_mode = 2
-text = "Return"
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Retry"
+flat = true
+
+[node name="Options" type="Button" parent="GameManager/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Options"
+flat = true
+
+[node name="Button3" type="Button" parent="GameManager/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Menu"
+flat = true
+
+[connection signal="button_down" from="GameManager/VBoxContainer/Button4" to="GameManager/VBoxContainer" method="_on_button_4_button_down"]
+[connection signal="button_down" from="GameManager/VBoxContainer/Options" to="GameManager/VBoxContainer" method="_on_button_2_button_down"]
+[connection signal="button_down" from="GameManager/VBoxContainer/Button3" to="GameManager/VBoxContainer" method="_on_button_3_button_down"]
 
 [editable path="Node3D"]
 [editable path="Node3D2"]
