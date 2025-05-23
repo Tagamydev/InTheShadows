@@ -317,6 +317,7 @@ offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_uffpw")
+level_number = 3
 
 [node name="Button4" type="Button" parent="GameManager/VBoxContainer"]
 layout_mode = 2

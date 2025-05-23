@@ -4,8 +4,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_qy7m1"]
 [ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_nt048"]
 [ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_dofvy"]
-[ext_resource type="Script" uid="uid://64sa47n541s" path="res://Scripts/MapController.gd" id="5_5ea5k"]
-[ext_resource type="Script" uid="uid://yrfewp8q7bpd" path="res://Scripts/TitleAnimation.gd" id="6_a4c41"]
+[ext_resource type="Script" path="res://Scripts/MapController.gd" id="5_5ea5k"]
+[ext_resource type="Script" path="res://Scripts/TitleAnimation.gd" id="6_a4c41"]
 [ext_resource type="AudioStream" uid="uid://do6vxkkulxqpm" path="res://Music/mainMenu.wav" id="7_5igtb"]
 [ext_resource type="Script" uid="uid://dq2hyq80rkhna" path="res://Scripts/Audio.gd" id="8_l48dr"]
 
@@ -108,7 +108,8 @@ theme_override_font_sizes/font_size = 20
 text = "Want some tea?"
 flat = true
 script = ExtResource("6_a4c41")
-max_alpha = 0.3
+max_alpha = 0.5
+total_animation_time = 4.0
 
 [node name="Level01" type="Button" parent="Control"]
 layout_mode = 1
@@ -130,7 +131,8 @@ text = "Grey Giant"
 flat = true
 script = ExtResource("6_a4c41")
 scene_number = 1
-max_alpha = 0.2
+max_alpha = 0.3
+total_animation_time = 3.0
 
 [node name="Level02" type="Button" parent="Control"]
 layout_mode = 1
@@ -152,8 +154,8 @@ text = "Spin the World"
 flat = true
 script = ExtResource("6_a4c41")
 scene_number = 2
-max_alpha = 0.4
-total_animation_time = 3.0
+max_alpha = 0.7
+total_animation_time = 5.0
 
 [node name="Level03" type="Button" parent="Control"]
 layout_mode = 1
@@ -175,8 +177,8 @@ text = "Gator Gaze"
 flat = true
 script = ExtResource("6_a4c41")
 scene_number = 3
-max_alpha = 0.6
-total_animation_time = 4.0
+max_alpha = 0.8
+total_animation_time = 6.0
 
 [node name="Level04" type="Button" parent="Control"]
 layout_mode = 1
@@ -199,7 +201,7 @@ flat = true
 script = ExtResource("6_a4c41")
 scene_number = 4
 max_alpha = 0.1
-total_animation_time = 5.0
+total_animation_time = 7.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5igtb")
