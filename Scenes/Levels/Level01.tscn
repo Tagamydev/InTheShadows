@@ -1,16 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://ip3g2a2gb3up"]
+[gd_scene load_steps=28 format=3 uid="uid://ip3g2a2gb3up"]
 
 [ext_resource type="Script" uid="uid://c87am7sqit7k8" path="res://Scripts/Movement.gd" id="1_d5jk2"]
 [ext_resource type="Texture2D" uid="uid://b0sg2thjb5g4w" path="res://Textures/RoyalScenary.png" id="2_gxsi4"]
 [ext_resource type="ArrayMesh" uid="uid://bvg5x8ldw2g08" path="res://Models/RoyalScenary.obj" id="3_rkq7q"]
 [ext_resource type="PackedScene" uid="uid://ciltpt8q083y1" path="res://Prefabs/tea_pod.tscn" id="5_gu1ye"]
 [ext_resource type="AudioStream" uid="uid://dno1ygbtc3i7i" path="res://Music/room00.wav" id="6_rkq7q"]
-[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="7_gu1ye"]
 [ext_resource type="Script" uid="uid://dq2hyq80rkhna" path="res://Scripts/Audio.gd" id="7_w6blo"]
 [ext_resource type="FontFile" uid="uid://gcb7ahxr532f" path="res://Fonts/Kalam-Light.ttf" id="8_5jjrx"]
 [ext_resource type="ArrayMesh" uid="uid://dbynqu0woiioq" path="res://Models/LightCone.obj" id="8_kt2x8"]
-[ext_resource type="PackedScene" uid="uid://c5hpb7mdm3i6m" path="res://Shaders/blur.tscn" id="8_ucel3"]
-[ext_resource type="Script" uid="uid://c60mmprys8jii" path="res://Scripts/menuButtons.gd" id="9_w6blo"]
+[ext_resource type="PackedScene" uid="uid://8w8kmwrgxyek" path="res://Prefabs/game_manager.tscn" id="9_ucel3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aygce"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -258,64 +256,6 @@ text = "Scroll the middle mouse wheel to rotate the object horizontally..."
 fit_content = true
 horizontal_alignment = 1
 
-[node name="GameManager" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_gu1ye")
-level_number = 1
-
-[node name="Control" type="Control" parent="GameManager"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TestShader" parent="GameManager" instance=ExtResource("8_ucel3")]
-layout_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameManager"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -187.0
-offset_top = -286.0
-offset_right = 187.0
-offset_bottom = 286.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("9_w6blo")
-level_number = 1
-
-[node name="Button4" type="Button" parent="GameManager/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 96
-text = "Retry"
-flat = true
-
-[node name="Options" type="Button" parent="GameManager/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 96
-text = "Options"
-flat = true
-
-[node name="Button3" type="Button" parent="GameManager/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 96
-text = "Menu"
-flat = true
-
-[connection signal="button_down" from="GameManager/VBoxContainer/Button4" to="GameManager/VBoxContainer" method="_on_button_4_button_down"]
-[connection signal="button_down" from="GameManager/VBoxContainer/Options" to="GameManager/VBoxContainer" method="_on_button_2_button_down"]
-[connection signal="button_down" from="GameManager/VBoxContainer/Button3" to="GameManager/VBoxContainer" method="_on_button_3_button_down"]
+[node name="GameManager" parent="." instance=ExtResource("9_ucel3")]
 
 [editable path="Node3D"]

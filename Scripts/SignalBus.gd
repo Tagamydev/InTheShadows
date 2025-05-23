@@ -16,6 +16,7 @@ signal animation_level_04()
 signal music_on()
 signal music_off()
 signal open_menu()
+signal really_solved()
 
 func	_ready():
 	var Game = SaveGame.load_savegame()

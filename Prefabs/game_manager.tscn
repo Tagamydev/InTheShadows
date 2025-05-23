@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://8w8kmwrgxyek"]
+
+[ext_resource type="Script" uid="uid://c6llmshn8nece" path="res://Scripts/GameManager.gd" id="1_y0k1s"]
+[ext_resource type="PackedScene" uid="uid://c5hpb7mdm3i6m" path="res://Shaders/blur.tscn" id="2_jyjdf"]
+[ext_resource type="Script" uid="uid://c60mmprys8jii" path="res://Scripts/menuButtons.gd" id="3_qd18i"]
+[ext_resource type="Script" uid="uid://dbm11bs5c0jg2" path="res://Scripts/congrats_text.gd" id="4_jyjdf"]
+
+[node name="GameManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0k1s")
+level_number = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TestShader" parent="." instance=ExtResource("2_jyjdf")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -299.0
+offset_right = 399.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_qd18i")
+level_number = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 121
+text = "Congrats!!!!"
+fit_content = true
+horizontal_alignment = 1
+script = ExtResource("4_jyjdf")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 66.19)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Retry"
+flat = true
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Options"
+flat = true
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Menu"
+flat = true
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 96
+text = "Exit"
+flat = true
+
+[connection signal="button_down" from="VBoxContainer/Button4" to="VBoxContainer" method="_on_button_4_button_down"]
+[connection signal="button_down" from="VBoxContainer/Options" to="VBoxContainer" method="_on_button_2_button_down"]
+[connection signal="button_down" from="VBoxContainer/Button3" to="VBoxContainer" method="_on_button_3_button_down"]
+[connection signal="button_down" from="VBoxContainer/Button5" to="." method="_on_button_5_button_down"]

@@ -4,8 +4,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ugy13sgssmcc" path="res://Models/MapScene.obj" id="2_qy7m1"]
 [ext_resource type="ArrayMesh" uid="uid://rr562sspdc7t" path="res://Models/MapSceneObjects.obj" id="3_nt048"]
 [ext_resource type="PackedScene" uid="uid://ie5ov2l1a0rj" path="res://Shaders/Vignette.tscn" id="4_dofvy"]
-[ext_resource type="Script" path="res://Scripts/MapController.gd" id="5_5ea5k"]
-[ext_resource type="Script" path="res://Scripts/TitleAnimation.gd" id="6_a4c41"]
+[ext_resource type="Script" uid="uid://64sa47n541s" path="res://Scripts/MapController.gd" id="5_5ea5k"]
+[ext_resource type="Script" uid="uid://yrfewp8q7bpd" path="res://Scripts/TitleAnimation.gd" id="6_a4c41"]
 [ext_resource type="AudioStream" uid="uid://do6vxkkulxqpm" path="res://Music/mainMenu.wav" id="7_5igtb"]
 [ext_resource type="Script" uid="uid://dq2hyq80rkhna" path="res://Scripts/Audio.gd" id="8_l48dr"]
 

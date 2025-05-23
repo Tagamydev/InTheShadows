@@ -28,6 +28,7 @@ func return_menu():
 		Game.write_savegame()
 	visible = true
 	finish = true
+	SignalBus.really_solved.emit()
 	#get_tree().change_scene_to_file("res://Scenes/Menus/map.tscn")
 
 
@@ -54,3 +55,8 @@ func _process(delta):
 	if start:
 		if solved == to_be_solved:
 			return_menu()
+
+
+func _on_button_5_button_down() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
