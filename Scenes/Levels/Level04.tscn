@@ -206,8 +206,11 @@ threshold_y = 30.0
 [node name="Node3D2" parent="." instance=ExtResource("6_rltgf")]
 
 [node name="Node3D" parent="Node3D2" index="0"]
-threshold_x = 0.5
-threshold_y = 0.2
+threshold_rot_x = 4
+threshold_rot_y = 5
+threshold_rot_z = 13
+threshold_x = 1.0
+threshold_y = 1.0
 
 [node name="Node3D3" parent="." instance=ExtResource("7_i5uxc")]
 

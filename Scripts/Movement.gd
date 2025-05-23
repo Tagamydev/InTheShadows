@@ -24,7 +24,7 @@ func _ready():
 
 
 func rotate_vertical(mouse_delta):
-	var rotation_speed := 0.01
+	var rotation_speed := 0.03
 	if abs(normal.x) > 0.3 && abs(normal.z) > 0.5:
 		if mouse_delta.y > 0:
 			obj.rotate_z(1 * rotation_speed)
