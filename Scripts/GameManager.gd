@@ -22,7 +22,7 @@ func start_match():
 
 func return_menu():
 	var	Game = SaveGame.load_savegame()
-	if (SignalBus.level_unlocked < level_number) and solved == to_be_solved:
+	if (SignalBus.level_unlocked < level_number) and solved == to_be_solved and not SignalBus.test_mode:
 		SignalBus.level_unlocked = level_number
 		Game.level = level_number
 		Game.write_savegame()

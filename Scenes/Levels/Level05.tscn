@@ -214,8 +214,9 @@ threshold_y = 4.0
 [node name="Node3D2" parent="." instance=ExtResource("8_uburf")]
 
 [node name="Node3D" parent="Node3D2" index="0"]
-threshold_rot_x = 4
-threshold_rot_y = 4
+threshold_rot_x = 10
+threshold_rot_y = 10
+threshold_rot_z = 90
 threshold_x = 4.0
 threshold_y = 4.0
 

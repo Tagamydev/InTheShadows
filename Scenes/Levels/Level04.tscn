@@ -214,8 +214,11 @@ threshold_y = 0.2
 [node name="Node3D3" parent="." instance=ExtResource("7_i5uxc")]
 
 [node name="Node3D" parent="Node3D3" index="0"]
-threshold_x = 0.5
-threshold_y = 0.2
+threshold_rot_x = 5
+threshold_rot_y = 5
+threshold_rot_z = 12
+threshold_x = 1.0
+threshold_y = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_whblq")
